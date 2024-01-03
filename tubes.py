@@ -30,7 +30,6 @@ def main():
 
     def video_stream():
         ret, img = videoCaptureObject.read()
-        img = cv2.resize(img, (720, 1280))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = apply_effects(img)
         img = np.array(img)
