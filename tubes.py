@@ -13,7 +13,6 @@ from cv2 import BackgroundSubtractorMOG2
 
 videoCaptureObject = cv2.VideoCapture(0)
 out = cv2.VideoWriter('out.mp4', cv2.VideoWriter_fourcc(*'MP4V'), 24, (720, 1280))
-background_subtractor = cv2.createBackgroundSubtractorMOG2()
 
 def take_snapshot():
     ret, frame = videoCaptureObject.read()
@@ -33,7 +32,6 @@ def mosaic(img):
     for y in range(0, img.shape[0], block_size):
         for x in range(0, img.shape[1], block_size):
             img[y:y+block_size, x:x+block_size] = np.mean(img[y:y+block_size, x:x+block_size], axis=(0, 1))
-
     return img
 
 def carton(originalmage):
@@ -217,7 +215,7 @@ def change_color():
         colorNum=0
 
 def main():
-    global mosEff, cartEff, neonEff, colorNum, xrayEff, splash_color, laut_phase, paintEff, splashEff, lautEff, mirrorEff, kaleidEff
+    global colorNum, splash_color, laut_phase, mirrorEff, kaleidEff
     non_aktif()
     mirrorEff = False
     kaleidEff = False
@@ -231,7 +229,7 @@ def main():
         img = apply_effects(img)
         img = np.array(img)
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-        cv2.imshow("original", img)
+        cv2.imshow("Webcam by ANI", img)
         out.write(img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             videoCaptureObject.release()
