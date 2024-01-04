@@ -217,7 +217,7 @@ def change_color():
         colorNum=0
 
 def main():
-    global mosEff, cartEff, neonEff, colorNum, xrayEff, splash_color, laut_phase, paintEff, splashEff, lautEff, mirrorEff, kaleidEff
+    global colorNum, splash_color, laut_phase, mirrorEff, kaleidEff
     non_aktif()
     mirrorEff = False
     kaleidEff = False
@@ -231,7 +231,7 @@ def main():
         img = apply_effects(img)
         img = np.array(img)
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-        cv2.imshow("original", img)
+        cv2.imshow("Webcam by ANI", img)
         out.write(img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             videoCaptureObject.release()
