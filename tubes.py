@@ -13,7 +13,6 @@ from cv2 import BackgroundSubtractorMOG2
 
 videoCaptureObject = cv2.VideoCapture(0)
 out = cv2.VideoWriter('out.mp4', cv2.VideoWriter_fourcc(*'MP4V'), 24, (720, 1280))
-background_subtractor = cv2.createBackgroundSubtractorMOG2()
 
 def take_snapshot():
     ret, frame = videoCaptureObject.read()
@@ -33,7 +32,6 @@ def mosaic(img):
     for y in range(0, img.shape[0], block_size):
         for x in range(0, img.shape[1], block_size):
             img[y:y+block_size, x:x+block_size] = np.mean(img[y:y+block_size, x:x+block_size], axis=(0, 1))
-
     return img
 
 def carton(originalmage):
